@@ -1,0 +1,20 @@
+# Binaries
+*.exe
+*.out
+*.o
+*.a
+
+# Dependency directories
+vendor/
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go files
+*.log
+
+# Editor
+.idea/
+.vscode/
