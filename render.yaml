@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: targeting-engine
+    runtime: go
+    repo: https://github.com/vignesh05p/targeting-engine
+    buildCommand: go build -o main .
+    startCommand: ./main
+    branch: main
+    envVars:
+      - key: DB_URL
+        sync: false
+    plan: free
