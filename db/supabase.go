@@ -11,7 +11,7 @@ var DB *sql.DB
 
 func InitDB() {
 	// Replace with your actual Supabase connection string
-	connStr := "postgres://postgres:vignesh%40A82172@db.ylvkvzitlfurfxtfclcb.supabase.co:5432/postgres"
+	connStr := "postgres://postgres:<your-password>@db.ylvkvzitlfurfxtfclcb.supabase.co:5432/postgres?sslmode=require"
 
 	var err error
 	DB, err = sql.Open("postgres", connStr)
