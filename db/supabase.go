@@ -3,17 +3,25 @@ package db
 import (
 	"database/sql"
 	"log"
+	"os"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
 
 func InitDB() {
-	// Replace with your actual Supabase connection string
-	connStr := "postgres://postgres:<your-password>@db.ylvkvzitlfurfxtfclcb.supabase.co:5432/postgres?sslmode=require"
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("⚠️ No .env file found. Continuing with system environment variables.")
+	}
 
-	var err error
+	connStr := os.Getenv("DB_URL")
+	if connStr == "" {
+		log.Fatal("❌ DB_URL environment variable not set")
+	}
+
 	DB, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("❌ Failed to connect to database:", err)
